@@ -1,0 +1,86 @@
+
+
+
+=============================
+=      File description     =
+=============================
+
+
+1.SimpleHashSet.java
+2.OpenHashSet.java
+3.ClosedHashSet.java
+4.CollectionFacadeSet.java
+5.LinkedListFacadeSet.java
+6.SimpleSetPerformanceAnalyzer.java
+7.README
+8.RESULTS
+
+
+
+
+
+=============================
+=          Design           =
+=============================
+
+
+
+
+=============================
+=  Implementation details   =
+=============================
+
+1.How I implemented OpenHashSet's table:
+
+I've decided to create a sub class of CollectionFacadeSet
+such that the hash table is an array of this sub class 
+(LinkedListFacadeSet is how I named it).
+So that each bucket is a linked list wrapped by 
+LinkedListFacadeSet.
+
+2.How I implemented the delete mechanism in ClosedHashSet:
+
+I've constructed a hash table that's actually a double array
+Of strings. The containing array, in the size of the hash table
+Capacity and each bucket is actually a size two array of strings.
+The item itself is kept as the first element and the second element 
+is null if the bucket is not flagged, or a string "Flagged"
+If an item was deleted. 
+
+3.Discussing the results of the analysis in depth:
+
+- The bad results of OpenHashSet for data1.txt:
+Because data1.txt words all have the same hash result
+all the elements went to one single bucket creating a very
+long linked list, therefore each time another item was added
+the contains() function had to go all over the long linked 
+List in order to make sure the item wasn't there.
+
+- The bad results of ClosedHashSet for data1.txt:
+In this case because all the items have the same hash
+The hash function had to iterate many times over the
+Array in order to find an empty bucket.
+
+- Summarize the strengths and weaknesses of each of the data structures as reflected by
+The results. Which would you use for which purposes?:
+Tree set generally had good behaviour in almost all cases.
+Java's hash set had the best results.
+Therefore when needing to have fast access to specific
+elements I would use hash set.
+When I just need to keep elements and don't care about finding
+them fast or keeping duplicates I would use LinkedList.
+
+- How did your two implementations compare between themselves?:
+OpenHashSet did better in almost all case. For instance when 
+Adding "hi" for data1.txt OpenHashSet could just add it in the
+End of the linked list where ClosedHashSet had to check for
+all the occupied buckets first.
+
+- How did your implementations compare to Java's built in HashSet?:
+Java's HashSet perform much better in almost all cases, beside one
+Case where the difference was very small.
+
+- Did you find java's HashSet performance on data1.txt surprising? Can you explain it?:
+I didn't find it surprising. 
+I think they must be using some random hash function picking.
+

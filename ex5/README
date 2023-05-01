@@ -1,0 +1,131 @@
+
+
+
+=============================
+=      Files description     =
+=============================
+
+1) DirectoryProcessor.java : 
+
+	Class that represents the main program, 
+	does the actual files management processes by using all the other classes.
+
+2) Filter.java : 
+
+	An interface for all the Filter objects, has one method
+ "filterFiles(String[] filesNames)", which
+	filtered the given files names.
+
+3) All Filter classes - Implement the Filter interface for the specific filter:
+
+	FileFilter.java,   AllFilter.java,      GreaterThanFilter.java,  SmallerThanFilter.java, 
+	PrefixFilter.java, WritableFilter.java, HiddenFilter.java,       BetweenFilter.java,
+	SuffixFilter.java, ContainsFilter.java, ExecutableFilter.java
+
+4) FilterFactory.java : 
+
+	A factory class for Filter.
+
+5) SortFiles.java : 
+
+	An interface of a sorting object for files names.
+
+6) All Sort classes - Implement the SortFiles interface : 
+
+	MergeSortAbs.java, MergeSortSize.java, MergeSortType.java
+
+7) SortFactory.java : 
+
+	A factory class for SortFiles objects.
+
+8) TypeOneError.java : 
+
+	A class for type one errors, extends Exception.
+
+9) TypeOneError - different kinds :
+
+	- TypeOneFilterError.java - extends TypeOneError.
+	- TypeOneOrderError.java - extends TypeOneError.
+	- TypeOneBadFilterNameError.java - extends TypeOneFilterError.
+ 	- TypeOneBadFilterParamError.java - extends TypeOneFilterError.
+
+10) TypeTwoError.java : 
+
+	A class for type two errors, extends Exception.
+
+11) TypeTwoError.java - different kinds :
+
+	- TypeTwoInvalidUsageError.java - extends TypeTwoError.
+	- TypeTwoIoError - extends TypeTwoError.
+                                        
+                                     
+=============================
+=          Design           =
+=============================
+
+-       I've chosen to implement the different filters and sorting mechanisms 
+	as independent classes that implement a common interface (Different interface for 
+	filters and another for sorting mechanism). 
+	I've chosen that design in order to follow the single choice
+	principle and the factory design pattern. 
+	I've chosen that design since it seemed to me like the most elegant and ordered 
+	solution to the fact that there are many different kinds of filters to be chosen
+	from and with respect to the Single-Choice principle.
+	
+-	As to The sorting mechanisms, using the single-choice principle and the
+	factory design pattern felt to me like the most elegant and modular solution.
+
+=============================
+=  Implementation details   =
+=============================
+
+1) Exception hierarchy description : 
+
+	The exception hierarchy I've used is :
+
+	- All the exception classes I've implemented inherit from
+	The class Exception.
+
+	- The top two exception classes are the most general and non- specific
+	ones, They represent the main two different kinds of exceptions we might
+	need to check :
+	-TypeOneError.java,
+	-TypeTwoError.java
+
+	-Type one exceptions has two main different kinds which I then implemented 
+	as separate exception classes that inherit from "TypeOneError.java".
+	The first kind has to do with a problem in the Filter sub-section
+	and the other one has to do with a problem in the Order sub-section:
+	- TypeOneFilterError.java - extends TypeOneError.
+	- TypeOneOrderError.java - extends TypeOneError.
+
+	- Then I implemented the different kinds of "typeOneFilterException" we might
+	need to have the ability to differentiate between : 
+	- TypeOneBadFilterNameError.java - extends TypeOneFilterError.
+ 	- TypeOneBadFilterParamError.java - extends TypeOneFilterError.
+
+	-Type two exceptions has two main different kinds which we might need 
+	to differentiate between, i  implemented them as separate exception classes 
+	that inherit from "TypeTwoError.java".
+	The first kind has to do with a problem in the usage of the program.
+	and the other one has to do with a problem in the Input/Output of the 
+	given files:
+	- TypeTwoInvalidUsageError.java - extends TypeTwoError.
+	- TypeTwoIoError - extends TypeTwoError.
+
+	
+	
+2) Sort implementation details : 
+
+	I've sorted the matched files with my own implementation of the Merge-Sort
+	algorithm.
+	I've implemented the different kinds of orders with three different
+	classes in which each offer a different implementation of merge sort, 
+	suitable to the different kinds of orders.
+
+	I've decided to use that algorithm, since it is efficient in time:
+	average run time of nlogn. And it is also efficient in space since 
+	it is a stable (meaning the sorting is done in place).
+	
+	The Data structure I've used is of arrays, since arrays are ordered,
+	and allow excess to specific indexed in O(1).

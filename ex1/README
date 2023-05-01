@@ -1,0 +1,18 @@
+
+~ FILE DESCRIPTION ~
+
+1. Book : A class representing a book object.
+2. Patron : A class representing a patron object.
+3. Library : A class representing a library object.
+
+
+~ DESIGN ~
+
+
+~ IMPLEMENTATION ISSUES ~
+
+I’ve used arrays to hold and organise the books and the patrons. And an array of int arrays
+That assigns each patron id an array that holds the id of the books borrowed by the patron.
+
+
+~ ANSWERS ~

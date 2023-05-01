@@ -1,0 +1,44 @@
+
+
+~ FILE DESCRIPTION ~
+
+1. SpaceShip : Abstract Class representing a generic spaceship.
+2. SpaceShipFactory : Factory class that turns user input into spaceship objects.
+3. HumanSpaceShip : Class representing a human controlled spaceship object.
+4. EnemySpaceShip : Abstract class representing an enemy (computer controlled) spaceship.
+5. RunnerSpaceShip : Class representing a runner spaceship object.
+6. BasherSpaceShip : Class representing a basher spaceship object.
+7. AggressiveSpaceShip : Class representing an aggressive spaceship object.
+8. DrunkSpaceShip : Class representing a drunk space ship object.
+9. SpecialSpaceShip : Class representing a special spaceship object.
+
+
+~ DESIGN ~
+
+
+~ IMPLEMENTATION ISSUES ~
+
+My main consideration was whether to use an Interface or an Abstract class for the
+implementation of the SpaceShip class.
+I've decided to use an abstract class since most of the code is shared within all spaceships
+and they all have common fields which are not "static final" and they're all of the same "kind".
+In terms of extensibility, the code can easily be extended in the sense that adding
+new kinds of spaceships is easily compiled with the rest of the code.
+I think the program is very intuitive and easy to understand. 
+The whole structure of the program can easily be seen as a tree, with the generic father at the top
+(SpaceShip) and the two main sub classes (Human controlled and computer controlled).
+
+
+~ ANSWERS ~
+
+1. The behaviour of the Drunkard ship:
+	The drunk spaceship moves in a shaky way, every 7'th round it either
+Calls the move method 5 times, turns left and accelerates or calls it once,
+Turns right and accelerates. The rest of the time it doesn't do any thing.
+
+2. The behaviour of the Special ship:
+	The special ship always accelerates and always turns towards the 
+Closest ship. 
+If the special ship is closer than 0.20 units to the the closest spaceship
+And within the angle of 0.20 radians it will attempt to fire.
+It's current energy is renewed within each round.

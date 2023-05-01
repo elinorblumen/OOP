@@ -1,0 +1,45 @@
+
+
+~ FILE DESCRIPTION ~
+
+1)BoopingSite.java
+2)BoopingSiteTest.java
+3)Locker.java
+4)LockerTest.java
+5)LongTermStorage.java
+6)LongTermTest.java
+7)SortByProximity.java
+8)SortByRating.java
+9)Spaceship.java
+10)SpaceshipTest.java
+11)SpaceshipDepositoryTest.java
+
+~ DESIGN ~
+
+~ IMPLEMENTATION ISSUES ~
+
+Locker:
+Ive chosen to store the information in a map as there's
+No order for the items. And I kept all the constraints
+Pairs in another array.
+
+Long term Storage: 
+I chose to store all the information in a map as well, the only
+Difference is that I didn't have to keep the constraints pairs,
+
+Data sets use:
+I chose the empty data set to ensure that when there are no hotels in a given
+city an empty array is returned.
+I chose the the data set just one city for the test that didn't require multiple cities.
+
+Compare By Rating:
+I implemented by Comperator interface, I implemented the compare method in
+such a way that if two hotels had the same rating they were compared by
+Their alphabet order.
+
+Compare by location:
+I implemented by Comperator interface, I implemented the compare method in
+such a way that if two hotels had the same distance they were compared by
+Their points of interest.
+
+
